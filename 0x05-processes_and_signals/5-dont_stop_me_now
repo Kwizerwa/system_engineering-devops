@@ -5,4 +5,5 @@
 pid=$(ps aux | grep "[4]-to_infinity_and_beyond" | awk '{print $2}')
 
 if [ -n "$pid" ]; then
-  kill "
+  kill "$pid"
+fi
