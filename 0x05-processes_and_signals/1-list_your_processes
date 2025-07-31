@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all currently running processes in a human-readable format with specific headers
+# This script lists all running processes with only USER and CMD fields
 
-ps -eo user,lstart,cmd --sort=start_time | awk 'BEGIN { printf "%-8s %-9s %s\n", "USER", "STARTED", "CMD" } 
-     NR > 1 { split($0, a, " "); 
-     printf "%-8s %s:%s:%s %s\n", a[1], a[4], a[5], a[6], substr($0, index($0,$8)) }'
+ps -eo user:20,comm --no-headers
