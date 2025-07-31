@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Task 1: 7-highlander script - infinite loop, trap SIGTERM, print message but keep running
+
+if [[ "$1" == "highlander" ]]; then
+  trap 'echo "I am invincible!!!"' SIGTERM
+
+  while true; do
+    echo "To infinity and beyond"
+    sleep 2
+  done
+
+  exit 0
+fi
+
+# Task 2: 67-stop_me_if_you_can - kills the 7-highlander process without using killall or pkill
+
+# This script assumes the 7-highlander process is running as this script called with arg "highlander"
+
+# Find PIDs of all 7-highlander instances by matching the script name and argument
+pids=$(ps aux | grep '[b]ash .*7-highlander highlander' | awk '{print $2}')
+
+if [[ -z "$pids" ]]; then
+  echo "No 7-highlander process found."
+  exit 1
+fi
+
+# Kill each found PID (using kill since not forbidden here)
+for pid in $pids; do
+  kill "$pid"
+done
+
+echo "Sent SIGTERM to 7-highlander process(es): $pids"
