@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Setting up output format with ps to include desired fields
 # Using -e to show all processes, including those without TTY
 # Using --forest for hierarchical display
