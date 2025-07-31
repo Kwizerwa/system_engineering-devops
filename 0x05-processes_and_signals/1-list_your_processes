@@ -1,2 +1,6 @@
-#!/usr/bin/env bash
-# This script lists all running processes with only USER and CMD fields
+#!/bin/bash
+
+# Setting up output format with ps to include desired fields
+# Using -e to show all processes, including those without TTY
+# Using --forest for hierarchical display
+ps -e -o user,pid,%cpu,%mem,comm --forest
