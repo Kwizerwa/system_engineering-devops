@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# file: 1-list_your_processes
-ps axjf
+# This script displays all currently running processes in a human-readable hierarchical format
+
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
