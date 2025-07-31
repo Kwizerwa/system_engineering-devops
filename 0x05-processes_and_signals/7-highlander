@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# 7-highlander: infinite loop printing message; prints OK on SIGTERM but keeps running
-
-trap 'echo OK' SIGTERM
-
-while true; do
-  echo "To infinity and beyond"
-  sleep 2
-done
