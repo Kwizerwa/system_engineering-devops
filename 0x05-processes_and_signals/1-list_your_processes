@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-# This script displays all currently running processes in a human-readable hierarchical format
+# This script displays all currently running processes in a human-readable format with specific headers
 
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
+ps -eo user,lstart,cmd --sort=start_time | awk 'BEGIN { printf "%-8s %-9s %s\n", "USER", "STARTED", "CMD" } 
+     NR > 1 { split($0, a, " "); 
+     printf "%-8s %s:%s:%s %s\n", a[1], a[4], a[5], a[6], substr($0, index($0,$8)) }'
